@@ -3,7 +3,8 @@
     public class Program
     {
         static void Main(string[] args) {
-            FileHandler.ReadFile();
+            FileHandler file = new FileHandler();
+            file.ReadFile();
         }
     }
 }

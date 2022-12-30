@@ -8,6 +8,6 @@ namespace SplitAndMerge
 {
     public interface IFileHandler
     {
-        static void ReadFile() { }
+        void ReadFile() { }
     }
 }
