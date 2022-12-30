@@ -1,0 +1,15 @@
+C:\Users\pasha\dotnet\PYCS_Language\PYCS_Language\bin\Debug\net6.0\PYCS_Language.exe
+C:\Users\pasha\dotnet\PYCS_Language\PYCS_Language\bin\Debug\net6.0\PYCS_Language.deps.json
+C:\Users\pasha\dotnet\PYCS_Language\PYCS_Language\bin\Debug\net6.0\PYCS_Language.runtimeconfig.json
+C:\Users\pasha\dotnet\PYCS_Language\PYCS_Language\bin\Debug\net6.0\PYCS_Language.dll
+C:\Users\pasha\dotnet\PYCS_Language\PYCS_Language\bin\Debug\net6.0\PYCS_Language.pdb
+C:\Users\pasha\dotnet\PYCS_Language\PYCS_Language\obj\Debug\net6.0\PYCS_Language.csproj.AssemblyReference.cache
+C:\Users\pasha\dotnet\PYCS_Language\PYCS_Language\obj\Debug\net6.0\PYCS_Language.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pasha\dotnet\PYCS_Language\PYCS_Language\obj\Debug\net6.0\PYCS_Language.AssemblyInfoInputs.cache
+C:\Users\pasha\dotnet\PYCS_Language\PYCS_Language\obj\Debug\net6.0\PYCS_Language.AssemblyInfo.cs
+C:\Users\pasha\dotnet\PYCS_Language\PYCS_Language\obj\Debug\net6.0\PYCS_Language.csproj.CoreCompileInputs.cache
+C:\Users\pasha\dotnet\PYCS_Language\PYCS_Language\obj\Debug\net6.0\PYCS_Language.dll
+C:\Users\pasha\dotnet\PYCS_Language\PYCS_Language\obj\Debug\net6.0\refint\PYCS_Language.dll
+C:\Users\pasha\dotnet\PYCS_Language\PYCS_Language\obj\Debug\net6.0\PYCS_Language.pdb
+C:\Users\pasha\dotnet\PYCS_Language\PYCS_Language\obj\Debug\net6.0\PYCS_Language.genruntimeconfig.cache
+C:\Users\pasha\dotnet\PYCS_Language\PYCS_Language\obj\Debug\net6.0\ref\PYCS_Language.dll
