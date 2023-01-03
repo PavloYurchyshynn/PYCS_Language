@@ -16,24 +16,32 @@ namespace SplitAndMerge
             foreach (string s in text)
             {
                 List<string> words = new List<string>(s.Split(new char[] { ' ' }));
-
                 for (int i = 0; i < words.Count; i++)
                 {
                     if (words[i] == Constants.PLUS)
                     {
-                        result.Add(handler.AddOperation(Convert.ToInt32(words[i - 1]), Convert.ToInt32(words[i + 1])));
-                    }
-                    if (words[i] == Constants.MINUS)
+                        int leftValue = Convert.ToInt32(words[i - 1]);
+                        int rightValue = Convert.ToInt32(words[i + 1]);
+                        var operationResult = handler.AddOperation(leftValue, rightValue);
+                        result.Add(operationResult);
+                    } else if (words[i] == Constants.MINUS)
                     {
-                        result.Add(handler.MinusOperation(Convert.ToInt32(words[i - 1]), Convert.ToInt32(words[i + 1])));
-                    }
-                    if (words[i] == Constants.MULTIPLY)
+                        int leftValue = Convert.ToInt32(words[i - 1]);
+                        int rightValue = Convert.ToInt32(words[i + 1]);
+                        var operationResult = handler.MinusOperation(leftValue, rightValue);
+                        result.Add(operationResult);
+                    } else if (words[i] == Constants.MULTIPLY)
                     {
-                        result.Add(handler.MultiplyOperation(Convert.ToInt32(words[i - 1]), Convert.ToInt32(words[i + 1])));
-                    }
-                    if (words[i] == Constants.DIVIDE)
+                        int leftValue = Convert.ToInt32(words[i - 1]);
+                        int rightValue = Convert.ToInt32(words[i + 1]);
+                        var operationResult = handler.MultiplyOperation(leftValue, rightValue);
+                        result.Add(operationResult);
+                    } else if (words[i] == Constants.DIVIDE)
                     {
-                        result.Add(handler.DivideOperation(Convert.ToInt32(words[i - 1]), Convert.ToInt32(words[i + 1])));
+                        int leftValue = Convert.ToInt32(words[i - 1]);
+                        int rightValue = Convert.ToInt32(words[i + 1]);
+                        var operationResult = handler.DivideOperation(leftValue, rightValue);
+                        result.Add(operationResult);
                     }
                 }
             }
