@@ -12,5 +12,9 @@ namespace SplitAndMerge
         public const string IF = "if";
         public const string ELSE = "else";
         public const string ELSE_IF = "elseIf";
+        public const string PLUS = "+";
+        public const string MINUS = "-";
+        public const string MULTIPLY = "*";
+        public const string DIVIDE = "/";
     }
 }
