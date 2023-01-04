@@ -8,21 +8,46 @@ namespace SplitAndMerge
 {
     public class BasicOperationsHandler
     {
-        public string AddOperation(int a, int b)
+        public double Eval(string exp, Dictionary<string, double> vars)
         {
-            return $"{a + b}";
-        }
-        public string MinusOperation(int a, int b)
-        {
-            return $"{a - b}";
-        }
-        public string MultiplyOperation(int a, int b)
-        {
-            return $"{a * b}";
-        }
-        public string DivideOperation(int a, int b)
-        {
-            return $"{a / b}";
+            int operatorIndex = -1;
+
+            for (int i = 0; i < exp.Length; i++)
+            {
+                char c = exp[i];
+                if ((c == '+' || c == '-'))
+                {
+                    operatorIndex = i;
+                    break;
+                }
+                else if ((c == '*' || c == '/') && operatorIndex < 0)
+                {
+                    operatorIndex = i;
+                }
+            }
+            if (operatorIndex < 0)
+            {
+                exp = exp.Trim();
+                if (vars.ContainsKey(exp))
+                    return vars[exp];
+                else
+                    return Double.Parse(exp);
+            }
+            else
+            {
+                switch (exp[operatorIndex])
+                {
+                    case '+':
+                        return Eval(exp.Substring(0, operatorIndex), vars) + Eval(exp.Substring(operatorIndex + 1), vars);
+                    case '-':
+                        return Eval(exp.Substring(0, operatorIndex), vars) - Eval(exp.Substring(operatorIndex + 1), vars);
+                    case '*':
+                        return Eval(exp.Substring(0, operatorIndex), vars) * Eval(exp.Substring(operatorIndex + 1), vars);
+                    case '/':
+                        return Eval(exp.Substring(0, operatorIndex), vars) / Eval(exp.Substring(operatorIndex + 1), vars);
+                }
+            }
+            return 0;
         }
     }
 }

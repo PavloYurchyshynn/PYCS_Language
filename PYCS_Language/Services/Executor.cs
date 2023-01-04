@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SplitAndMerge
 {
-    public class Parser : IParser
+    public class Executor : IExecutor
     {
-        public void Parse()
+        public void Execute()
         {
             FileHandler file = new FileHandler();
             string[] text = file.ReadFile();

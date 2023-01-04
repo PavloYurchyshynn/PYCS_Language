@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace SplitAndMerge
 {
-    public interface IParser
+    public interface IExecutor
     {
-        void Parse();
+        void Execute();
     }
 }
