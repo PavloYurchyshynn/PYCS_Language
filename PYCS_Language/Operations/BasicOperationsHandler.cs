@@ -8,6 +8,12 @@ namespace SplitAndMerge
 {
     public class BasicOperationsHandler
     {
+        public double Factorial(double n)
+        {
+            if (n == 1) return n;
+
+            return n * Factorial(n - 1);
+        }
         public double Eval(string exp, Dictionary<string, double> vars)
         {
             int operatorIndex = -1;
@@ -20,7 +26,7 @@ namespace SplitAndMerge
                     operatorIndex = i;
                     break;
                 }
-                else if ((c == '*' || c == '/') && operatorIndex < 0)
+                else if ((c == '*' || c == '/' || c == '!') && operatorIndex < 0)
                 {
                     operatorIndex = i;
                 }
@@ -45,6 +51,8 @@ namespace SplitAndMerge
                         return Eval(exp.Substring(0, operatorIndex), vars) * Eval(exp.Substring(operatorIndex + 1), vars);
                     case '/':
                         return Eval(exp.Substring(0, operatorIndex), vars) / Eval(exp.Substring(operatorIndex + 1), vars);
+                    case '!':
+                        return Factorial(Eval(exp.Substring(0, operatorIndex), vars));
                 }
             }
             return 0;

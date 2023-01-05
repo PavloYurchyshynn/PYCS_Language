@@ -13,7 +13,7 @@ namespace SplitAndMerge
             BasicOperationsHandler handler = new BasicOperationsHandler();
             List<string> result = new List<string>();
             Dictionary<string, double> vars = new Dictionary<string, double>();
-            vars.Add("x", 2.50); // this variable is hardcoded now
+            vars.Add("x", 3); // this variable is hardcoded now
 
             foreach (string s in text)
             {
