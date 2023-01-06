@@ -31,7 +31,7 @@ namespace SplitAndMerge
                 if (vars.ContainsKey(exp))
                     return vars[exp];
                 else
-                    return Double.Parse(exp);
+                    return double.Parse(exp);
             }
             else
             {

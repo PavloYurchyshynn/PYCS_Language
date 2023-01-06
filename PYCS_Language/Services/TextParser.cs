@@ -10,15 +10,20 @@ namespace SplitAndMerge
     {
         public void ParseText(string[] text)
         {
-            BasicOperationsHandler handler = new BasicOperationsHandler();
+            BasicOperationsHandler basicHandler = new BasicOperationsHandler();
+            VariablesHandler varsHandler = new VariablesHandler();
             List<string> result = new List<string>();
-            Dictionary<string, double> vars = new Dictionary<string, double>();
-            vars.Add("x", 2.50); // this variable is hardcoded now
 
             foreach (string s in text)
             {
-                string stringResult = Convert.ToString(handler.Eval(s, vars));
-                result.Add(stringResult);
+                if (s.Contains(Constants.LET))
+                {
+                    varsHandler.VaribleOperation(s);
+                } 
+                else
+                {
+                    result.Add(Convert.ToString(basicHandler.Eval(s, varsHandler.Variables)));
+                }
             }
             foreach (string el in result)
                 Console.WriteLine(el);
