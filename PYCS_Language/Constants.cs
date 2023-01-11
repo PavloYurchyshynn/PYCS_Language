@@ -1,20 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SplitAndMerge
+﻿namespace SplitAndMerge
 {
-    public class Constants
+    public class BasicOperationsConstants
     {
         public const string LET = "let";
         public const string IF = "if";
         public const string ELSE = "else";
         public const string ELSE_IF = "elseIf";
-        public const char PLUS = '+';
-        public const char MINUS = '-';
-        public const char MULTIPLY = '*';
-        public const char DIVIDE = '/';
+        public const string CONSOLE = "print";
     }
 }
