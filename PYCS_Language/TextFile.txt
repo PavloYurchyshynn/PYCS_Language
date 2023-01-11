@@ -1,17 +1,9 @@
-﻿5 + 10
-let pasha = 11 + 4
+﻿let pasha = 11 + 4
 let x = 2,5
-5 + 20 * x
-10 - 2
-2 * 8 / 10 + x - 8
-10 / 2
 let numTen = 10,5 + 5
-10 + pasha * 2
-5
-pasha + numTen
-5 + 20 * x + 5!
-10 - 2
-2 * 8 / 10 + x - 8 + 5!
-10 / 2
-5!
-x!
+let sum = pasha + numTen
+print(pasha)
+print(15 + 5 + pasha + 5!)
+print(pasha - numTen)
+print(5)
+print(sum)

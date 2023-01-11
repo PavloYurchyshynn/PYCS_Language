@@ -1,5 +1,4 @@
-﻿
-namespace SplitAndMerge
+﻿namespace SplitAndMerge
 {
     public class Program
     {
