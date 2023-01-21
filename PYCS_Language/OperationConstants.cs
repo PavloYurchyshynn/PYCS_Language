@@ -1,6 +1,6 @@
 ﻿namespace SplitAndMerge
 {
-    public class BasicOperationsConstants
+    public class OperationsConstants
     {
         public const string LET = "let";
         public const string IF = "if";

@@ -10,15 +10,15 @@
 
             foreach (string s in text)
             {
-                if (s.Contains(BasicOperationsConstants.LET) && s.IndexOf(BasicOperationsConstants.LET) == 0)
+                if (s.Contains(OperationsConstants.LET) && s.IndexOf(OperationsConstants.LET) == 0)
                 {
                     varsHandler.VaribleOperation(s);
                 }
-                else if (s.Contains(BasicOperationsConstants.IF) && s.IndexOf(BasicOperationsConstants.IF) == 0)
+                else if (s.Contains(OperationsConstants.IF) && s.IndexOf(OperationsConstants.IF) == 0)
                 {
                     ifElseHandler.IfElseOperation(s, varsHandler);
                 }
-                else if (s.Contains(BasicOperationsConstants.CONSOLE) && s.IndexOf(BasicOperationsConstants.CONSOLE) == 0)
+                else if (s.Contains(OperationsConstants.CONSOLE) && s.IndexOf(OperationsConstants.CONSOLE) == 0)
                 {
                     consoleHandler.PrintToConsole(s, varsHandler.Variables);
                 }
