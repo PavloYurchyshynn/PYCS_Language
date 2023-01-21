@@ -2,7 +2,13 @@
 {
     class ConsoleHandler
     {
-        public void PrintToConsole(string str, Dictionary<string, double> vars)
+        public void PrintError(int index)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Error in line {index}");
+            Console.ForegroundColor = ConsoleColor.Gray;
+        }
+        public void PrintToConsole(string str, Dictionary<string, double> vars, int stringIndex)
         {
             if (str.Contains("print(") && str.IndexOf(")") == str.Length - 1)
             {
@@ -21,7 +27,7 @@
             } 
             else
             {
-                Console.WriteLine("Incorrect syntax");
+                PrintError(stringIndex);
             }
         }
     }

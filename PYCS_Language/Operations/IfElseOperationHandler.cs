@@ -2,27 +2,28 @@
 {
     class IfElseOperationHandler
     {
-        public void IfElseExecutor(string value, VariablesHandler varsHandler)
+        public void IfElseExecutor(string value, VariablesHandler varsHandler, int stringIndex)
         {
             ConsoleHandler consoleHandler = new ConsoleHandler();
             value = value.Trim();
 
             if (value.Contains(OperationsConstants.LET))
             {
-                varsHandler.VaribleOperation(value);
+                varsHandler.VaribleOperation(value, stringIndex);
             }
             else if (value.Contains(OperationsConstants.CONSOLE))
             {
-                consoleHandler.PrintToConsole(value, varsHandler.Variables);
+                consoleHandler.PrintToConsole(value, varsHandler.Variables, stringIndex);
             }
             else
             {
-                Console.WriteLine("Incorrect sintax");
+                consoleHandler.PrintError(stringIndex);
             }
         }
-        public void IfElseOperation(string str, VariablesHandler varsHandler)
+        public void IfElseOperation(string str, VariablesHandler varsHandler, int stringIndex)
         {
             BooleanOperationHandler booleanHandler = new BooleanOperationHandler();
+            ConsoleHandler consoleHandler = new ConsoleHandler();
 
             string ifBoolValue = str.Substring(str.IndexOf("(") + 1, str.IndexOf(")") - str.IndexOf("(") - 1);
             string ifValue = str.Substring(str.IndexOf("{") + 1, str.IndexOf("}") - str.IndexOf("{") - 1);
@@ -41,16 +42,16 @@
             {
                 if (booleanHandler.CompareValues(ifBoolValue, varsHandler.Variables))
                 {
-                    IfElseExecutor(ifValue, varsHandler);
+                    IfElseExecutor(ifValue, varsHandler, stringIndex);
                 } 
                 else
                 {
-                    IfElseExecutor(elseValue, varsHandler);
+                    IfElseExecutor(elseValue, varsHandler, stringIndex);
                 }
             }
             else
             {
-                Console.WriteLine("Incorrect sintax");
+                consoleHandler.PrintError(stringIndex);
             }
         }
     }
