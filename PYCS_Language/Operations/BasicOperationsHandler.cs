@@ -15,7 +15,7 @@
             for (int i = 0; i < exp.Length; i++)
             {
                 char c = exp[i];
-                if ((c == '+' || c == '-'))
+                if (c == '+' || c == '-')
                 {
                     operatorIndex = i;
                     break;

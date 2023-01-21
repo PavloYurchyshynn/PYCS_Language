@@ -7,3 +7,14 @@ print(15 + 5 + pasha + 5!)
 print(pasha - numTen)
 print(5)
 print(sum)
+let five = 5
+if (5 < 10) {let seven = 7}
+if (5 <= 5) {print(sum)}
+if (10 > 11) {print(444)} else { print(333) }
+if (11 >= 11) { print(seven) }
+if (x <= 5) {print(numTen)} else {print(123)}
+if (5 > pasha) {print(456)} else {let six = 6}
+if (x > pasha) {print(555)} else {print(666)}
+if (sum < 10) {print(5555)} else {print(6666)}
+print(seven)
+print(six)

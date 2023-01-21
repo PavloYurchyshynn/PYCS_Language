@@ -8,7 +8,7 @@
             BasicOperationsHandler basicHandler = new BasicOperationsHandler();
             List<string> splitString = new List<string>(str.Split(' '));
 
-            if (splitString[0] == BasicOperationsConstants.LET && splitString[2] == "=")
+            if (splitString[0] == OperationsConstants.LET && splitString[2] == "=")
             {
                 Variables.Add(splitString[1], basicHandler.Eval(str.Substring(str.IndexOf("=") + 1), Variables));
             }
