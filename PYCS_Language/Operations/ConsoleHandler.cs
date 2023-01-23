@@ -10,25 +10,34 @@
         }
         public void PrintToConsole(string str, Dictionary<string, double> vars, int stringIndex)
         {
-            if (str.Contains("print(") && str.IndexOf(")") == str.Length - 1)
+            try
             {
-                BasicOperationsHandler basicHandler = new BasicOperationsHandler();
-
-                string consoleValue = str.Substring(str.IndexOf("(") + 1, str.IndexOf(")") - str.IndexOf("(") - 1);
-
-                if (vars.ContainsKey(consoleValue))
+                if (str.Contains("print(") && str.IndexOf(")") == str.Length - 1)
                 {
-                    Console.WriteLine(vars[consoleValue]);
-                } 
+                    BasicOperationsHandler basicHandler = new BasicOperationsHandler();
+
+                    string consoleValue = str.Substring(str.IndexOf("(") + 1, str.IndexOf(")") - str.IndexOf("(") - 1);
+
+                    if (vars.ContainsKey(consoleValue))
+                    {
+                        Console.WriteLine(vars[consoleValue]);
+                    }
+                    else
+                    {
+                        Console.WriteLine(basicHandler.Eval(consoleValue, vars));
+                    }
+                }
                 else
                 {
-                    Console.WriteLine(basicHandler.Eval(consoleValue, vars));
+                    PrintError(stringIndex);
                 }
-            } 
-            else
+            }
+            catch (Exception ex)
             {
                 PrintError(stringIndex);
+                Console.WriteLine(ex.Message);
             }
+            
         }
     }
 }

@@ -7,15 +7,24 @@
         {
             ConsoleHandler consoleHandler = new ConsoleHandler();
             BasicOperationsHandler basicHandler = new BasicOperationsHandler();
-            List<string> splitString = new List<string>(str.Split(' '));
 
-            if (splitString[0] == OperationsConstants.LET && splitString[2] == "=")
+            try
             {
-                Variables.Add(splitString[1], basicHandler.Eval(str.Substring(str.IndexOf("=") + 1), Variables));
+                List<string> splitString = new List<string>(str.Split(' '));
+
+                if (splitString[0] == OperationsConstants.LET && splitString[2] == "=")
+                {
+                    Variables.Add(splitString[1], basicHandler.Eval(str.Substring(str.IndexOf("=") + 1), Variables));
+                }
+                else
+                {
+                    consoleHandler.PrintError(stringIndex);
+                }
             }
-            else
+            catch(Exception ex)
             {
                 consoleHandler.PrintError(stringIndex);
+                Console.WriteLine(ex.Message);
             }
         }
     }
