@@ -18,3 +18,4 @@ if (x > pasha) {print(555)} else {print(666)}
 if (sum < 10) {print(5555)} else {print(6666)}
 print(seven)
 print(six)
+while (5 < 4) {print(99999)}

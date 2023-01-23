@@ -2,36 +2,51 @@
 {
     public class TextParser : ITextParser
     {
-        public void ParseText(string[] text)
+        public void ParseString(string str, int stringIndex, VariablesHandler varsHandler)
         {
-            VariablesHandler varsHandler = new VariablesHandler();
             IfElseOperationHandler ifElseHandler = new IfElseOperationHandler();
             ConsoleHandler consoleHandler = new ConsoleHandler();
-            int stringIndex = 0;
+            WhileOperationHandler whileHandler = new WhileOperationHandler();
+            str = str.Trim();
 
             try
             {
-                foreach (string s in text)
+                if (str.Contains(OperationsConstants.LET) && str.IndexOf(OperationsConstants.LET) == 0)
                 {
-                    stringIndex++;
-                    if (s.Contains(OperationsConstants.LET) && s.IndexOf(OperationsConstants.LET) == 0)
-                    {
-                        varsHandler.VaribleOperation(s, stringIndex);
-                    }
-                    else if (s.Contains(OperationsConstants.IF) && s.IndexOf(OperationsConstants.IF) == 0)
-                    {
-                        ifElseHandler.IfElseOperation(s, varsHandler, stringIndex);
-                    }
-                    else if (s.Contains(OperationsConstants.CONSOLE) && s.IndexOf(OperationsConstants.CONSOLE) == 0)
-                    {
-                        consoleHandler.PrintToConsole(s, varsHandler.Variables, stringIndex);
-                    }
+                    varsHandler.VaribleOperation(str, stringIndex);
+                }
+                else if (str.Contains(OperationsConstants.IF) && str.IndexOf(OperationsConstants.IF) == 0)
+                {
+                    ifElseHandler.IfElseOperation(str, varsHandler, stringIndex);
+                }
+                else if (str.Contains(OperationsConstants.CONSOLE) && str.IndexOf(OperationsConstants.CONSOLE) == 0)
+                {
+                    consoleHandler.PrintToConsole(str, varsHandler.Variables, stringIndex);
+                }
+                else if (str.Contains(OperationsConstants.WHILE) && str.IndexOf(OperationsConstants.WHILE) == 0)
+                {
+                    whileHandler.WhileOperation(str, varsHandler, stringIndex);
+                }
+                else
+                {
+                    consoleHandler.PrintError(stringIndex);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 consoleHandler.PrintError(stringIndex);
                 Console.WriteLine(ex.Message);
+            }
+        }
+        public void ParseText(string[] text)
+        {
+            VariablesHandler varsHandler = new VariablesHandler();
+            int stringIndex = 0;
+
+            foreach (string s in text)
+            {
+                stringIndex++;
+                ParseString(s, stringIndex, varsHandler);
             }
         }
     }

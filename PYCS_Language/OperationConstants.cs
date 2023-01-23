@@ -6,5 +6,6 @@
         public const string IF = "if";
         public const string ELSE = "else";
         public const string CONSOLE = "print";
+        public const string WHILE = "while";
     }
 }

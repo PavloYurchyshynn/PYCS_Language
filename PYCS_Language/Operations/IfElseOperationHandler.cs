@@ -2,37 +2,11 @@
 {
     class IfElseOperationHandler
     {
-        public void IfElseExecutor(string value, VariablesHandler varsHandler, int stringIndex)
-        {
-            ConsoleHandler consoleHandler = new ConsoleHandler();
-
-            try
-            {
-                value = value.Trim();
-
-                if (value.Contains(OperationsConstants.LET))
-                {
-                    varsHandler.VaribleOperation(value, stringIndex);
-                }
-                else if (value.Contains(OperationsConstants.CONSOLE))
-                {
-                    consoleHandler.PrintToConsole(value, varsHandler.Variables, stringIndex);
-                }
-                else
-                {
-                    consoleHandler.PrintError(stringIndex);
-                }
-            }
-            catch(Exception ex)
-            {
-                consoleHandler.PrintError(stringIndex);
-                Console.WriteLine(ex.Message);
-            }
-        }
         public void IfElseOperation(string str, VariablesHandler varsHandler, int stringIndex)
         {
             BooleanOperationHandler booleanHandler = new BooleanOperationHandler();
             ConsoleHandler consoleHandler = new ConsoleHandler();
+            TextParser textParser = new TextParser();
 
             try
             {
@@ -53,11 +27,11 @@
                 {
                     if (booleanHandler.CompareValues(ifBoolValue, varsHandler.Variables))
                     {
-                        IfElseExecutor(ifValue, varsHandler, stringIndex);
+                        textParser.ParseString(ifValue, stringIndex, varsHandler);
                     }
                     else
                     {
-                        IfElseExecutor(elseValue, varsHandler, stringIndex);
+                        textParser.ParseString(elseValue, stringIndex, varsHandler);
                     }
                 }
                 else
