@@ -11,9 +11,15 @@
 
             try
             {
+                List<string> splitString = new List<string>(str.Split(' '));
+
                 if (str.Contains(OperationsConstants.LET) && str.IndexOf(OperationsConstants.LET) == 0)
                 {
-                    varsHandler.VaribleOperation(str, stringIndex);
+                    varsHandler.CreateVarible(str, stringIndex);
+                }
+                else if (varsHandler.Variables.ContainsKey(splitString[0]))
+                {
+                    varsHandler.EditVariable(str, varsHandler, stringIndex);
                 }
                 else if (str.Contains(OperationsConstants.IF) && str.IndexOf(OperationsConstants.IF) == 0)
                 {
