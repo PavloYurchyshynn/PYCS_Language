@@ -2,12 +2,12 @@
 {
     public class VariablesHandler
     {
+        readonly ConsoleHandler consoleHandler = new ConsoleHandler();
+        readonly BasicOperationsHandler basicHandler = new BasicOperationsHandler();
+
         public Dictionary<string, double> Variables = new Dictionary<string, double>();
         public void EditVariable(string str, VariablesHandler varsHandler, int stringIndex)
         {
-            ConsoleHandler consoleHandler = new ConsoleHandler();
-            BasicOperationsHandler basicHandler = new BasicOperationsHandler();
-
             try
             {
                 List<string> splitString = new List<string>(str.Split(' '));
@@ -23,15 +23,11 @@
             }
             catch(Exception ex)
             {
-                consoleHandler.PrintError(stringIndex);
-                Console.WriteLine(ex.Message);
+                consoleHandler.PrintError(stringIndex, ex.Message);
             }
         }
         public void CreateVarible(string str, int stringIndex)
         {
-            ConsoleHandler consoleHandler = new ConsoleHandler();
-            BasicOperationsHandler basicHandler = new BasicOperationsHandler();
-
             try
             {
                 List<string> splitString = new List<string>(str.Split(' '));
@@ -47,8 +43,7 @@
             }
             catch(Exception ex)
             {
-                consoleHandler.PrintError(stringIndex);
-                Console.WriteLine(ex.Message);
+                consoleHandler.PrintError(stringIndex, ex.Message);
             }
         }
     }

@@ -1,13 +1,14 @@
 ﻿namespace SplitAndMerge
 {
-    class BooleanOperationHandler
+    public class BooleanOperationHandler
     {
         public bool CompareValues(string str, Dictionary<string, double> vars)
         {
             str = str.Trim();
             List<string> splitString = new List<string>(str.Split(' '));
-            double firstValue = 0;
-            double secondValue = 0;
+
+            double firstValue;
+            double secondValue;
 
             if (vars.ContainsKey(splitString[0]) && !vars.ContainsKey(splitString[2]))
             {
@@ -29,6 +30,10 @@
                 firstValue = double.Parse(splitString[0]);
                 secondValue = double.Parse(splitString[2]);
             }
+            return CompateValuesSwitch(splitString, firstValue, secondValue);
+        }
+        private bool CompateValuesSwitch(List<string> splitString, double firstValue, double secondValue)
+        {
             switch (splitString[1])
             {
                 case ">":

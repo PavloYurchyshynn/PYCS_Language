@@ -1,11 +1,12 @@
 ﻿namespace SplitAndMerge
 {
-    class ConsoleHandler
+    public class ConsoleHandler
     {
-        public void PrintError(int index)
+        readonly BasicOperationsHandler basicHandler = new BasicOperationsHandler();
+        public void PrintError(int index, string message = "")
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"Error in line {index}");
+            Console.WriteLine($"Error in line {index} {message}");
             Console.ForegroundColor = ConsoleColor.Gray;
         }
         public void PrintToConsole(string str, Dictionary<string, double> vars, int stringIndex)
@@ -14,8 +15,6 @@
             {
                 if (str.Contains("print(") && str.IndexOf(")") == str.Length - 1)
                 {
-                    BasicOperationsHandler basicHandler = new BasicOperationsHandler();
-
                     string consoleValue = str.Substring(str.IndexOf("(") + 1, str.IndexOf(")") - str.IndexOf("(") - 1);
 
                     if (vars.ContainsKey(consoleValue))
@@ -34,8 +33,7 @@
             }
             catch (Exception ex)
             {
-                PrintError(stringIndex);
-                Console.WriteLine(ex.Message);
+                PrintError(stringIndex, ex.Message);
             }
             
         }

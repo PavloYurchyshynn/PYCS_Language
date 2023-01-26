@@ -2,8 +2,8 @@
 {
     public class Program
     {
-        static void Main(string[] args) {
-            Executor parser = new Executor();
+        static void Main() {
+            IExecutor parser = new Executor();
             parser.Execute();
         }
     }

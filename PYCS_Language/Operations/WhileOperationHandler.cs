@@ -1,11 +1,11 @@
 ﻿namespace SplitAndMerge
 {
-    class WhileOperationHandler
+    public class WhileOperationHandler
     {
+        readonly BooleanOperationHandler booleanHandler = new BooleanOperationHandler();
+        readonly ConsoleHandler consoleHandler = new ConsoleHandler();
         public void WhileOperation(string str, VariablesHandler varsHandler, int stringIndex)
         {
-            BooleanOperationHandler booleanHandler = new BooleanOperationHandler();
-            ConsoleHandler consoleHandler = new ConsoleHandler();
             TextParser textParser = new TextParser();
 
             try
@@ -34,8 +34,7 @@
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                consoleHandler.PrintError(stringIndex);
+                consoleHandler.PrintError(stringIndex, ex.Message);
             }
         }
     }

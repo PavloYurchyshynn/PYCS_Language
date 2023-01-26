@@ -2,15 +2,17 @@
 {
     public class TextParser : ITextParser
     {
+        readonly VariablesHandler varsHandler = new VariablesHandler();
+        readonly IfElseOperationHandler ifElseHandler = new IfElseOperationHandler();
+        readonly ConsoleHandler consoleHandler = new ConsoleHandler();
+        readonly WhileOperationHandler whileHandler = new WhileOperationHandler();
+
         public void ParseString(string str, int stringIndex, VariablesHandler varsHandler)
         {
-            IfElseOperationHandler ifElseHandler = new IfElseOperationHandler();
-            ConsoleHandler consoleHandler = new ConsoleHandler();
-            WhileOperationHandler whileHandler = new WhileOperationHandler();
-            str = str.Trim();
-
             try
             {
+                str = str.Trim();
+
                 List<string> splitString = new List<string>(str.Split(' '));
 
                 if (str.Contains(OperationsConstants.LET) && str.IndexOf(OperationsConstants.LET) == 0)
@@ -33,20 +35,14 @@
                 {
                     whileHandler.WhileOperation(str, varsHandler, stringIndex);
                 }
-                else
-                {
-                    consoleHandler.PrintError(stringIndex);
-                }
             }
             catch (Exception ex)
             {
-                consoleHandler.PrintError(stringIndex);
-                Console.WriteLine(ex.Message);
+                consoleHandler.PrintError(stringIndex, ex.Message);
             }
         }
         public void ParseText(string[] text)
         {
-            VariablesHandler varsHandler = new VariablesHandler();
             int stringIndex = 0;
 
             foreach (string s in text)

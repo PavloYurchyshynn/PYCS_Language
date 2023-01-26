@@ -1,11 +1,11 @@
 ﻿namespace SplitAndMerge
 {
-    class IfElseOperationHandler
+    public class IfElseOperationHandler
     {
+        readonly BooleanOperationHandler booleanHandler = new BooleanOperationHandler();
+        readonly ConsoleHandler consoleHandler = new ConsoleHandler();
         public void IfElseOperation(string str, VariablesHandler varsHandler, int stringIndex)
         {
-            BooleanOperationHandler booleanHandler = new BooleanOperationHandler();
-            ConsoleHandler consoleHandler = new ConsoleHandler();
             TextParser textParser = new TextParser();
 
             try
@@ -14,9 +14,11 @@
                 string ifValue = str.Substring(str.IndexOf("{") + 1, str.IndexOf("}") - str.IndexOf("{") - 1);
                 string elseString = str.Substring(str.IndexOf(OperationsConstants.ELSE) == -1 ? 0 : str.IndexOf("else"));
                 string elseValue = elseString.Substring(elseString.IndexOf("{") + 1, elseString.IndexOf("}") - elseString.IndexOf("{") - 1);
+
                 str = str.Replace(ifBoolValue, "");
                 str = str.Replace(ifValue, "");
                 str = str.Replace(elseValue, "");
+
                 List<string> splitString = new List<string>(str.Split(' '));
 
                 if (splitString[0] == OperationsConstants.IF &&
@@ -41,8 +43,7 @@
             }
             catch (Exception ex)
             {
-                consoleHandler.PrintError(stringIndex);
-                Console.WriteLine(ex.Message);
+                consoleHandler.PrintError(stringIndex, ex.Message);
             }
             
         }
