@@ -5,8 +5,7 @@
         public string path = @"C:\Users\pasha\dotnet\PYCS_Language\PYCS_Language\TextFile.txt";
         public string[] ReadFile()
         {
-            string[] lines = File.ReadAllLines(path);
-            return lines;
+            return File.ReadAllLines(path);
         }
     }
 }

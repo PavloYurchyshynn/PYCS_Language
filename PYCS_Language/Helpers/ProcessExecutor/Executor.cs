@@ -2,13 +2,14 @@
 {
     public class Executor : IExecutor
     {
+        readonly IFileHandler file = new FileHandler();
+        readonly ITextParser parser = new TextParser();
+
         public void Execute()
         {
             try
             {
-                FileHandler file = new FileHandler();
                 string[] text = file.ReadFile();
-                TextParser parser = new TextParser();
                 parser.ParseText(text);
             }
             catch(Exception ex)

@@ -2,12 +2,6 @@
 {
     public class BasicOperationsHandler
     {
-        public double Factorial(double n)
-        {
-            if (n == 1) return n;
-
-            return n * Factorial(n - 1);
-        }
         public double Eval(string exp, Dictionary<string, double> vars)
         {
             int operatorIndex = -1;
@@ -35,21 +29,32 @@
             }
             else
             {
-                switch (exp[operatorIndex])
-                {
-                    case '+':
-                        return Eval(exp.Substring(0, operatorIndex), vars) + Eval(exp.Substring(operatorIndex + 1), vars);
-                    case '-':
-                        return Eval(exp.Substring(0, operatorIndex), vars) - Eval(exp.Substring(operatorIndex + 1), vars);
-                    case '*':
-                        return Eval(exp.Substring(0, operatorIndex), vars) * Eval(exp.Substring(operatorIndex + 1), vars);
-                    case '/':
-                        return Eval(exp.Substring(0, operatorIndex), vars) / Eval(exp.Substring(operatorIndex + 1), vars);
-                    case '!':
-                        return Factorial(Eval(exp.Substring(0, operatorIndex), vars));
-                }
+                return EvalSwitch(vars, exp, operatorIndex);
             }
-            return 0;
+        }
+        private double EvalSwitch(Dictionary<string, double> vars, string exp, int operatorIndex)
+        {
+            switch (exp[operatorIndex])
+            {
+                case '+':
+                    return Eval(exp.Substring(0, operatorIndex), vars) + Eval(exp.Substring(operatorIndex + 1), vars);
+                case '-':
+                    return Eval(exp.Substring(0, operatorIndex), vars) - Eval(exp.Substring(operatorIndex + 1), vars);
+                case '*':
+                    return Eval(exp.Substring(0, operatorIndex), vars) * Eval(exp.Substring(operatorIndex + 1), vars);
+                case '/':
+                    return Eval(exp.Substring(0, operatorIndex), vars) / Eval(exp.Substring(operatorIndex + 1), vars);
+                case '!':
+                    return Factorial(Eval(exp.Substring(0, operatorIndex), vars));
+                default: 
+                    return 0;
+            }
+        }
+        private double Factorial(double n)
+        {
+            if (n == 1) return n;
+
+            return n * Factorial(n - 1);
         }
     }
 }
